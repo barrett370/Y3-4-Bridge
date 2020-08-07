@@ -1,9 +1,8 @@
-include .env
+.PHONY deps:
+deps:
+	pipenv install
 
-.PHONY: frontend
-frontend:
-	cd frontend/web && npm run dev
 
-.PHONY: backend
-backend:
-	pipenv run ./backend/manage.py runserver --settings=backend.settings.dev 
+.PHONY site:
+site:
+	python manage.py runserver 
