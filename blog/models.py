@@ -1,8 +1,10 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+import uuid
 
 class Post(models.Model):
+    post_id=models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
