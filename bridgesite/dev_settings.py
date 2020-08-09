@@ -26,7 +26,7 @@ SECRET_KEY = 'xbtr^jbm%#^3v235tjra$a_2ryp_@l-704k7i!^4b#rt92w5_c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True    
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','bridge.wilverley.site']
 
 
 # Application definition
