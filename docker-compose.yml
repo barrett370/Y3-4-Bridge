@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+        db:
+                image: postgres
+                environment:
+                        - POSTGRES_DB=postgres
+                        - POSTGRES_USER=django
+                        - POSTGRES_PASSWORD=${PG_PASS}
+        web:
+                build: . 
+                environment:
+                        - DJANGO_SETTINGS_MODULE=${STAGE}
+                        - PG_PASS=${PG_PASS}
+                volumes:
+                        - .:/site
+                ports:
+                        - 8000:8000
+                depends_on:
+                        - db
