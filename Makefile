@@ -13,10 +13,6 @@ docker:
 	sudo docker build -t sam/bridge_site .
 
 
-.PHONY prod:
-prod:
-	make docker && sudo docker run -p 8000:8000 -e "DJANGO_SETTINGS_MODULE=bridgesite.prod_settings" sam/bridge_site:latest 
 
-.PHONY dev:
-dev:
-	make docker && sudo docker run -p 8000:8000 -e "DJANGO_SETTINGS_MODULE=bridgesite.dev_settings" sam/bridge_site:latest 
+.PHONY test:
+	DJANGO_SETTINGS_MODULE=bridgesite.test_settings pipenv run python manage.py test blog
