@@ -16,7 +16,7 @@ def post(request, post_id):
 
 
 def latest_cv(request):
-    cv = CV.objects.filter(last_updated__lte=timezone.now()).order_by("last_updated")[0]
+    cv = CV.objects.all().order_by("last_updated")[0]
     return render(request, "blog/cv.html", {"cv": cv})
 
 
