@@ -43,12 +43,25 @@ class CV(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
     tech_skills = ["Django", "Python"]
     education = {
-        "University": [{}],
-        "A_levels": [
-            {"Computer Science": "A", "Physics": "C", "Futher Mathematics AS": "A",}
-        ],
-        "gcses": [{""}],
-        "misc": [{}],
+        "University": {},
+        "A levels": {
+            "Computer Science": "A",
+            "Physics": "C",
+            "Futher Mathematics AS": "A",
+        },
+        "GCSEs": {
+            "Mathematics": "A*",
+            "English Language": "A*",
+            "Chemistry": "A*",
+            "English Literature": "A",
+            "Physics": "A",
+            "Biology": "A",
+            "Religious Studies": "A",
+            "History": "A",
+            "Computer Science": "A",
+            "French": "B",
+            "Art": "C",
+        },
     }
 
     def publish(self):

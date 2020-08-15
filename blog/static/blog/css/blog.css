@@ -12,12 +12,19 @@ h1 {
 h2 {
   color: #ffffff;
   text-align: center;
+  font-size: 50;
+}
+
+ul {
+  color: white;
+  text-align: left;
+  font-size: large;
 }
 
 p {
+  font-size: larger;
   color: #ffffff;
 }
-
 div.border {
   float: right;
   width: 500px;
