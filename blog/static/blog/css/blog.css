@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  background-image: url("../images/spuare.gif");
+  background-color: black;
+}
+
+h1 {
+  color: #ffffff;
+  text-align: center;
+}
+
+h2 {
+  color: #ffffff;
+  text-align: center;
+}
+
+p {
+  color: #ffffff;
+}
+
+div.border {
+  float: right;
+  width: 500px;
+  margin: auto;
+  box-shadow: black 0px 5px 10px;
+  background-color: blue;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border: 6px solid #ce42f4;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+}
+
+div.floatright {
+  float: right;
+  text-align: center;
+  width: 500px;
+}
+
+div.floatleft {
+  float: left;
+  text-align: center;
+  width: 350px;
+}
+
+div.buttons {
+  float: left;
+  text-align: center;
+  width: 300px;
+  position: relative;
+  left: 20px;
+}
+
+div.aboutsite {
+  float: left;
+  text-align: left;
+  width: 350px;
+}
+
+div.frame {
+  width: 900px;
+  margin: auto;
+  height: auto;
+}
+
+img.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.buttons {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#buttondiv {
+  text-align: center;
+}
+
+hr {
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #0000ff;
+  padding: 0;
+}

@@ -10,7 +10,7 @@ firebase-debug.log*
 settings.py
 .env
 prod_settings.py
-.sqlite3
+*.sqlite3
 # Firebase cache
 .firebase/
 
