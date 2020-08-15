@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+        <div class="CV">
+            <div class="revision_date">
+                {{ cv.last_updated}}
+            </div>
+            <div class="name"> {{ cv.name }} </div>
+            <div class="address"> {{ cv.address }} </div>
+            <div class="phone_number"> {{ cv.phone_number }} </div>
+            <div class="email_address"> {{ cv.email_address }} </div>
+
+            <div class="tech_skills"> 
+                <h1> Tech Skills </h1>
+                {% for skill in cv.tech_skills %}
+                    <div class="tech_skill"> {{ skill }} </div>
+                {% endfor %}
+            </div>
+
+            <div class="eduation">
+                <h1> Education </h1>
+                {% for section in cv.education %}
+                    {% for level, sublevels in section.items %}
+                        <div class="section">
+                            <h2> {{ level }} </h2>
+                            {% for course, grade in sublevels %}
+                                <div class="course"> {{ course }}: {{ grade }}</div>
+                            {% endfor %}
+                        </div> 
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+        </div>
+{% endblock %}

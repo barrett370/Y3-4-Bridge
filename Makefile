@@ -16,3 +16,8 @@ docker:
 
 .PHONY test:
 	DJANGO_SETTINGS_MODULE=bridgesite.test_settings pipenv run python manage.py test blog
+
+
+.PHONY dev: 
+dev: 
+	DJANGO_SETTINGS_MODULE=bridgesite.test_settings make site

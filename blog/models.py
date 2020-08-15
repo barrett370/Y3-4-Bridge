@@ -23,32 +23,37 @@ class Post(models.Model):
         return self.title
 
 
-class Course(model.Model):
-    page_id = models.CharField(
+class Course(models.Model):
+    course_id = models.CharField(
         max_length=100, blank=True, unique=True, default=uuid.uuid4
     )
     tile: str
-    description: str 
+    description: str
     completion_date: datetime
-    grade: str 
-
+    grade: str
 
 
 class CV(models.Model):
 
-    title = "My CV"
-    A_levels = [
-        {
-            "Mathematics": "A",
-            "Computer Science": "A",
-            "Physics": "C",
-            "Futher Mathematics AS": "A",
-        }
-    ]
+    title = "Sam Barrett: CV"
+    name = "Sam Barrett"
+    address = models.TextField()
+    phone_number = models.CharField(max_length=14)
+    email_address = models.CharField(max_length=50)
+    last_updated = models.DateTimeField(blank=True, null=True)
+    tech_skills = ["Django", "Python"]
+    education = {
+        "University": [{}],
+        "A_levels": [
+            {"Computer Science": "A", "Physics": "C", "Futher Mathematics AS": "A",}
+        ],
+        "gcses": [{""}],
+        "misc": [{}],
+    }
 
-    gcses = [
-        {
-            ""
-        }
-    ]
+    def publish(self):
+        self.last_updated = timezone.now()
+        self.save()
 
+    def __str__(self):
+        return self.title
