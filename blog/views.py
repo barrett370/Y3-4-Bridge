@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post, CV
+from .models import Post, CV, Course, TechSkill
 
 
 def post_list(request):
@@ -23,3 +23,13 @@ def latest_cv(request):
 def cv(request, revision_date):
     cv = CV.objects.get(last_updated=revision_date)
     return render(request, "blog/cv.html", {"cv": cv})
+
+
+def course(request, course_id):
+    course = Course.objects.get(course_id=course_id)
+    return render(request, "blog/course.html", {"course": course})
+
+
+def tech_skill(request, skill_id):
+    tech_skill = TechSkill.objects.get(skill_id=skill_id)
+    return render(request, "blog/tech_skill.html", {"tech_skill": tech_skill})

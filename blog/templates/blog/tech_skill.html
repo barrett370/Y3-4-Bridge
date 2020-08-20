@@ -1,0 +1,13 @@
+
+{% extends 'blog/base.html' %}
+{% block content %}
+        <div class="skill">
+            <div class="date">
+                {{ tech_skill.completetion_date }}
+            </div>
+	    <h2>{{ tech_skill.title }}</h2>
+
+        <h3> Amount of Experience: {{ tech_skill.experience_amount }} </h3>
+            <p>{{ tech_skill.description|linebreaksbr }}</p>
+        </div>
+{% endblock %}

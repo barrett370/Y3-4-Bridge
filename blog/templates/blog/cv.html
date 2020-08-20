@@ -13,13 +13,23 @@
                 <h1> Tech Skills </h1>
                 <ul>
                 {% for skill in cv.tech_skills %}
-                    <div class="tech_skill"> <li>{{ skill }}</li> </div>
+                    <div class="tech_skill"> <li><a href="/cv/skill/{{skill.skill_id}}"> {{ skill.title }}</li> </div>
                 {% endfor %}
                 </ul>
             </div>
 
             <div class="eduation">
                 <h1> Education </h1>
+                <h2> University Modules </h2>
+                <ul>
+                {% for course in cv.university_modules %} 
+
+                   <div class="Course">
+	                <li><a href="/cv/course/{{ course.course_id }}">{{ course.title }}</a></li>
+                    </div>
+                {% endfor %}
+
+                </ul>
                 {% for section, subsection in cv.education.items  %}
                 <div class="section">
                     <h2> {{ section }} </h2>
@@ -30,6 +40,17 @@
                         </div> 
                     </ul>
                 {% endfor %}
+
+                <h2> Miscellaneous </h2>
+                <ul>
+                {% for course in cv.misc_modules %} 
+
+                   <div class="">
+	                <li><a href="/cv/course/{{ course.course_id }}">{{ course.title }}</a></li>
+                    </div>
+
+                {% endfor %}
+                </ul>
             </div>
 
         </div>
