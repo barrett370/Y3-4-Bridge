@@ -1,7 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, LiveServerTestCase
 from blog.models import Post
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.db.utils import IntegrityError
 import pytz
 
 
@@ -13,9 +14,13 @@ class PostTest(TestCase):
     test_publish_date = datetime.fromtimestamp(1326244375, tz=pytz.UTC)
 
     def setUp(self):
-        self.user = User.objects.create_user(
-            username="test_user", email="", password="Passw0rd"
-        )
+        try:
+            self.user = User.objects.create_user(
+                username="test_user", email="", password="Passw0rd"
+            )
+        except IntegrityError:
+            pass
+
         Post.objects.create(
             post_id=self.test_post_id,
             author=self.user,

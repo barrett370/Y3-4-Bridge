@@ -7,7 +7,7 @@ yarn-error.log*
 firebase-debug.log*
 .vscode/
 
-settings.py
+#settings.py
 .env
 prod_settings.py
 *.sqlite3
