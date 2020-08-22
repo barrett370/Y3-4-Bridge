@@ -12,7 +12,7 @@ import pytz
 
 class BlogFunctionalTest(StaticLiveServerTestCase):
     test_post_id: str = "46c3c3c7-d1c2-4649-aae9-f3f79ace13ba"  # example uuid4 id
-    test_title = "Test Post #1"
+    test_post_title = "Test Post #1"
     test_text = "test text"
     test_create_date = datetime.fromtimestamp(1326244364, tz=pytz.UTC)
     test_publish_date = datetime.fromtimestamp(1326244375, tz=pytz.UTC)
@@ -53,6 +53,7 @@ class BlogFunctionalTest(StaticLiveServerTestCase):
 
     def tearDown(self):
         self.driver.quit()
+        pass
 
     def create_test_post(self):
         try:
@@ -65,7 +66,7 @@ class BlogFunctionalTest(StaticLiveServerTestCase):
         Post.objects.create(
             post_id=self.test_post_id,
             author=self.user,
-            title=self.test_title,
+            title=self.test_post_title,
             text=self.test_text,
             created_date=self.test_create_date,
             publish_date=self.test_publish_date,
@@ -83,7 +84,7 @@ class BlogFunctionalTest(StaticLiveServerTestCase):
         self.driver.get(self.live_server_url + "/post/" + self.test_post_id)
         self.assertEqual(self.driver.title, "Sam Barrett Bridging coursework Blog")
         post_title = self.driver.find_element_by_id("post_title")
-        self.assertEqual(post_title.text, self.test_title)
+        self.assertEqual(post_title.text, self.test_post_title)
         post_text = self.driver.find_element_by_id("post_text")
         self.assertEqual(post_text.text, self.test_text)
 
@@ -134,15 +135,32 @@ class BlogFunctionalTest(StaticLiveServerTestCase):
         self.assertEqual(self.driver.page_source, expected_cv)
 
     def test_navigation_bar(self):
+        self.driver.get(self.live_server_url)
+
         self.create_test_cv()
-        body = self.driver.find_element_by_tag_name("body")
-        print(body.text)
-        nav_bar = body.find_element_by_id("nav-bar")
-        nav_bar.find_element_by_link_text("Home").click()
-
-        expected_cv = open("expected_pages/expected_cv.html", "r").read()
-
-        self.assertEqual(self.driver.page_source, expected_cv)
-        self.create_test_post()
         self.driver.find_element_by_link_text("My CV").click()
+        expected_cv = open("expected_pages/expected_cv.html", "r").read()
+        self.assertEqual(expected_cv, self.driver.page_source)
+        self.create_test_post()
+        self.driver.find_element_by_link_text("Home").click()
+        expected_home = open("expected_pages/expected_home.html", "r").read()
+        self.assertEqual(self.driver.page_source, expected_home)
 
+    def test_post_links(self):
+        self.create_test_post()
+
+        self.driver.get(self.live_server_url)
+
+        self.driver.find_element_by_link_text(self.test_post_title).click()
+
+        expected_post = open("expected_pages/expected_post.html", "r").read()
+        self.assertEqual(self.driver.page_source, expected_post)
+
+    def test_course_links(self):
+        self.create_test_cv()
+        self.driver.get(self.live_server_url)
+
+        self.driver.find_element_by_link_text(self.test_uni_course_title).click()
+
+        f = open("foo", "w")
+        f.write(self.driver.page_source)
